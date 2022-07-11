@@ -5,6 +5,8 @@ public struct EvoActivityIndicator: View {
    @State private var isAnimating: Bool = true
    @State private var index: Int = 0
    
+   public init() {}
+   
    func opacity(for nocke: Int) -> Double {
       if isAnimating && nocke == 1 {
          return index >= 0 && index < 3 ? 1 : 0
