@@ -23,12 +23,20 @@ public struct EvoActivityIndicator: View {
    public var body: some View {
       ZStack {
          Image("Nocke_part_0", bundle: .module)
+            .resizable()
+            .scaledToFit()
             .opacity(opacity(for: 0))
          Image("Nocke_part_1", bundle: .module)
+            .resizable()
+            .scaledToFit()
             .opacity(opacity(for: 1))
          Image("Nocke_part_2", bundle: .module)
+            .resizable()
+            .scaledToFit()
             .opacity(opacity(for: 2))
          Image("Nocke_part_3", bundle: .module)
+            .resizable()
+            .scaledToFit()
             .opacity(opacity(for: 3))
       }
       .onAppear() {
@@ -43,7 +51,15 @@ public struct EvoActivityIndicator: View {
 
 struct EvoActivityIndicator_Previews: PreviewProvider {
    static var previews: some View {
-      EvoActivityIndicator()
-         .edgesIgnoringSafeArea(.all)
+      Group {
+         EvoActivityIndicator()
+            .edgesIgnoringSafeArea(.all)
+         EvoActivityIndicator()
+            .frame(width: 50, height: 50)
+            .edgesIgnoringSafeArea(.all)
+         EvoActivityIndicator()
+            .frame(width: 200, height: 200)
+            .edgesIgnoringSafeArea(.all)
+      }
    }
 }
