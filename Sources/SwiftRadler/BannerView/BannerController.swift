@@ -10,11 +10,7 @@ public class BannerController: ObservableObject {
    private var timer: Timer? = nil
    private var isRunning: Bool { return banner != nil }
 
-   public init() {
-//      AppNotification.showBannerPublisher()
-//         .sink{ self.show(banner: $0) }
-//         .store(in: cancelBag)
-   }
+   public init() {}
    
    public func show(banner: BannerData) {
       queue.push(banner)
