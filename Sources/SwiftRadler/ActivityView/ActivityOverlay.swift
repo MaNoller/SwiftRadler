@@ -16,7 +16,7 @@ public struct ActivityOverlay: View {
          
          VStack {
             EvoActivityIndicator()
-               .frame(width: 50, height: 50)
+               .frame(width: 80, height: 80)
             
             Text(message)
                .foregroundColor(Color.white)
