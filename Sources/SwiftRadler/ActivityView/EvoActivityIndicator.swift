@@ -3,9 +3,17 @@ import SwiftUI
 public struct EvoActivityIndicator: View {
    
    @State private var isAnimating: Bool = true
-   @State private var index: Int = 0
+   @State private var index: Int = 2
    
    public init() {}
+   
+   private func start() {
+      _ = Timer.scheduledTimer(withTimeInterval: 0.4, repeats: true) { _ in
+         withAnimation(.easeIn(duration: 0.7)) {
+            index = index == 5 ? 0 : index + 1
+         }
+      }
+   }
    
    func opacity(for nocke: Int) -> Double {
       if isAnimating && nocke == 1 {
@@ -39,13 +47,7 @@ public struct EvoActivityIndicator: View {
             .scaledToFit()
             .opacity(opacity(for: 3))
       }
-      .onAppear() {
-         _ = Timer.scheduledTimer(withTimeInterval: 0.7, repeats: true) { _ in
-            withAnimation(.easeInOut(duration: 0.7)) {
-               index = index == 5 ? 0 : index + 1
-            }
-         }
-      }
+      .onAppear() { start() }
    }
 }
 
