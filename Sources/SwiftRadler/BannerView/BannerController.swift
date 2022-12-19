@@ -21,6 +21,7 @@ public class BannerController: ObservableObject {
       timer?.invalidate()
       timer = nil
       banner = nil
+      run()
    }
    
    private func run() {
