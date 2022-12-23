@@ -20,7 +20,7 @@ public class BannerController: ObservableObject {
    
    public func hide() {
       banner = nil
-      Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
+      Timer.scheduledTimer(withTimeInterval: 0.25, repeats: false) { [weak self] _ in
          self?.run()
       }
    }
