@@ -20,14 +20,12 @@ public class BannerController: ObservableObject {
    
    public func hide() {
       banner = nil
-      Timer.scheduledTimer(withTimeInterval: 0.5, repeats: false) { [weak self] _ in
+      Timer.scheduledTimer(withTimeInterval: 1, repeats: false) { [weak self] _ in
          self?.run()
       }
    }
    
    private func run() {
-      guard !isRunning else { return }
-      
       banner = queue.pop()
       isRunning = banner != nil
       
