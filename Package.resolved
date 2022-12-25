@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "MSAL",
+        "repositoryURL": "https://github.com/AzureAD/microsoft-authentication-library-for-objc.git",
+        "state": {
+          "branch": null,
+          "revision": "64657b49f573334eb729329b767d6c21c3dd05e3",
+          "version": "1.2.6"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
