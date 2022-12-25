@@ -22,18 +22,18 @@ public class MSAL {
    
    //Mark: - Login
    
-   public func login(viewController: UIViewController) async throws -> MsalAuth {
-      return try await withCheckedThrowingContinuation { continuation -> Void in
-         login(viewController: viewController) { auth, error in
-            if let auth = auth {
-               continuation.resume(returning: auth)
-            } else {
-               let error = error ?? .unknownError
-               continuation.resume(throwing: error)
-            }
-         }
-      }
-   }
+//   public func login(viewController: UIViewController) async throws -> MsalAuth {
+//      return try await withCheckedThrowingContinuation { continuation -> Void in
+//         login(viewController: viewController) { auth, error in
+//            if let auth = auth {
+//               continuation.resume(returning: auth)
+//            } else {
+//               let error = error ?? .unknownError
+//               continuation.resume(throwing: error)
+//            }
+//         }
+//      }
+//   }
    
    public func login(viewController: UIViewController, completion: @escaping (MsalAuth?, MsalError?)->()) {
       let webviewParams = MSALWebviewParameters(authPresentationViewController: viewController)
@@ -57,18 +57,18 @@ public class MSAL {
    
    //Mark: - Refresh
    
-   public func refresh(accountId: String) async throws -> MsalAuth {
-      return try await withCheckedThrowingContinuation { continuation -> Void in
-         refresh(accountId: accountId) { auth, error in
-            if let auth = auth {
-               continuation.resume(returning: auth)
-            } else {
-               let error = error ?? .unknownError
-               continuation.resume(throwing: error)
-            }
-         }
-      }
-   }
+//   public func refresh(accountId: String) async throws -> MsalAuth {
+//      return try await withCheckedThrowingContinuation { continuation -> Void in
+//         refresh(accountId: accountId) { auth, error in
+//            if let auth = auth {
+//               continuation.resume(returning: auth)
+//            } else {
+//               let error = error ?? .unknownError
+//               continuation.resume(throwing: error)
+//            }
+//         }
+//      }
+//   }
    
    public func refresh(accountId: String, completion: @escaping (MsalAuth?, MsalError?)->()) {
       guard let account = try? msalApplication.account(forIdentifier: accountId) else
