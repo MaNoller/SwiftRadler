@@ -1,4 +1,4 @@
 public struct MsalAuth {
-   let token: String
-   let accountId: String
+   public let token: String
+   public let accountId: String
 }

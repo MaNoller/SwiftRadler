@@ -8,7 +8,7 @@ public class MSAL {
    private let clientId: String
    private let authority: String
    
-   var isLoggingEnabled = false
+   public var isLoggingEnabled = false
    
    private lazy var msalApplication: MSALPublicClientApplication = {
       MSAL.makeMsalApplication(clientId: clientId, authority: authority)
@@ -23,22 +23,33 @@ public class MSAL {
    //Mark: - Login
    
    public func login(viewController: UIViewController) async throws -> MsalAuth {
+      return try await withCheckedThrowingContinuation { continuation -> Void in
+         login(viewController: viewController) { auth, error in
+            if let auth = auth {
+               continuation.resume(returning: auth)
+            } else {
+               let error = error ?? .unknownError
+               continuation.resume(throwing: error)
+            }
+         }
+      }
+   }
+   
+   public func login(viewController: UIViewController, completion: @escaping (MsalAuth?, MsalError?)->()) {
       let webviewParams = MSALWebviewParameters(authPresentationViewController: viewController)
       let parameters = MSALInteractiveTokenParameters(scopes: scopes, webviewParameters: webviewParams)
       parameters.completionBlockQueue = DispatchQueue.main
       
-      return try await withCheckedThrowingContinuation { continuation -> Void in
-         msalApplication.acquireToken(with: parameters, completionBlock: { (result, error) in
-            guard let result = result, let identifier = result.account.identifier else {
-               let msalError = error != nil ? self.mapError(error!) : MsalError.unknownError
-               return continuation.resume(throwing: msalError)
-            }
-            let auth = MsalAuth(token: result.accessToken, accountId: identifier)
-            continuation.resume(returning: auth)
-         })
-      }
+      
+      msalApplication.acquireToken(with: parameters, completionBlock: { (result, error) in
+         guard let result = result, let identifier = result.account.identifier else {
+            let msalError = error != nil ? self.mapError(error!) : MsalError.unknownError
+            return completion(nil, msalError)
+         }
+         let auth = MsalAuth(token: result.accessToken, accountId: identifier)
+         completion(auth, nil)
+      })
    }
-   
    
    public func onOpenUrl(url: URL) {
       MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: nil)
@@ -59,7 +70,7 @@ public class MSAL {
       }
    }
    
-   private func refresh(accountId: String, completion: @escaping (MsalAuth?, MsalError?)->()) {
+   public func refresh(accountId: String, completion: @escaping (MsalAuth?, MsalError?)->()) {
       guard let account = try? msalApplication.account(forIdentifier: accountId) else
       { return completion(nil, MsalError.interactionRequired) }
       
