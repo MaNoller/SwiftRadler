@@ -7,10 +7,6 @@ public enum LoginError {
 }
 
 public protocol LoginHandler {
-   var scopes: [String] { get }
-   var clientId: String { get }
-   var authority: String { get }
-   
    func login(with auth: MsalAuth, completion: @escaping ()->())
    func refresh(with auth: MsalAuth, completion: @escaping ()->())
    func logout(completion: @escaping ()->())
@@ -19,13 +15,13 @@ public protocol LoginHandler {
 
 public class MsalController: ObservableObject {
    private let cancelBag = CancelBag()
-   private let msal: MSAL
    private let loginHandler: LoginHandler
    
    //NOTE: This view must be added to the root of your SwiftUI view stack
    public let msalView = MSALView()
+   public let msal: MSAL
    
-   @Published private(set) var isLoading = false
+   @Published public private(set) var isLoading = false
    
    public init(loginHandler: LoginHandler, msal: MSAL) {
       self.loginHandler = loginHandler
