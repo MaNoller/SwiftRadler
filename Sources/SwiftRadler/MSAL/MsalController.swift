@@ -24,7 +24,11 @@ public class MsalController: ObservableObject {
    public let msal: MSAL
    
    var hasInternetConnection: Bool {
+#if targetEnvironment(simulator)
+      return true
+#else
       networkMonitor.currentPath.status == .satisfied
+#endif
    }
    
    @Published public private(set) var isLoading = false
