@@ -4,6 +4,8 @@ import UIKit
 public struct MSALView: UIViewControllerRepresentable {
    public let controller = MSALViewController ()
    
+   public init() {}
+   
    public func makeUIViewController(context: Context) -> MSALViewController {
       return controller
    }
