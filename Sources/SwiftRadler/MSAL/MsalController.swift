@@ -1,6 +1,5 @@
 import Foundation
 import SwiftUI
-import Network
 
 public enum LoginError {
    case noInternetConnection
@@ -17,18 +16,14 @@ public protocol LoginHandler {
 public class MsalController: ObservableObject {
    private let cancelBag = CancelBag()
    private let loginHandler: LoginHandler
-   private let networkMonitor = NWPathMonitor()
+   private let networkMonitor: NetworkMonitor?
    
    //NOTE: This view must be added to the root of your SwiftUI view stack
    public let msalView = MSALView()
    public let msal: MSAL
    
    var hasInternetConnection: Bool {
-#if targetEnvironment(simulator)
-      return true
-#else
-      networkMonitor.currentPath.status == .satisfied
-#endif
+      networkMonitor?.isConnected ?? true
    }
    
    @Published public private(set) var isLoading = false
@@ -36,6 +31,13 @@ public class MsalController: ObservableObject {
    public init(loginHandler: LoginHandler, msal: MSAL) {
       self.loginHandler = loginHandler
       self.msal = msal
+      self.networkMonitor = nil
+   }
+   
+   public init(loginHandler: LoginHandler, msal: MSAL, networkMonitor: NetworkMonitor) {
+      self.loginHandler = loginHandler
+      self.msal = msal
+      self.networkMonitor = networkMonitor
    }
    
    //Mark: - Login
