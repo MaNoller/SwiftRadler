@@ -51,6 +51,8 @@ public class MsalController: ObservableObject {
          if let auth = auth {
             self.didAuthenticate(msalAuth: auth)
          } else {
+            print("MSAL: authenticate failed: \(error.debugDescription)")
+            print("MSAL: authenticate failed: \(error?.localizedDescription)")
             self.handleError(error ?? MsalError.unknownError)
          }
       }
