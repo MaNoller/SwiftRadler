@@ -52,7 +52,7 @@ public class MsalController: ObservableObject {
             self.didAuthenticate(msalAuth: auth)
          } else {
             print("MSAL: authenticate failed: \(error.debugDescription)")
-            print("MSAL: authenticate failed: \(error?.localizedDescription)")
+            print("MSAL: authenticate failed: \(String(describing: error?.localizedDescription))")
             self.handleError(error ?? MsalError.unknownError)
          }
       }
