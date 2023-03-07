@@ -27,8 +27,7 @@ public extension DateFormatter {
       formatter.formatOptions = [.withFullDate,
                                  .withTime,
                                  .withDashSeparatorInDate,
-                                 .withColonSeparatorInTime,
-                                 .withTimeZone]
+                                 .withColonSeparatorInTime]
       formatter.timeZone = TimeZone.current
       return formatter
    }()
@@ -38,8 +37,7 @@ public extension DateFormatter {
       formatter.formatOptions = [.withFullDate,
                                  .withTime,
                                  .withDashSeparatorInDate,
-                                 .withColonSeparatorInTime,
-                                 .withTimeZone]
+                                 .withColonSeparatorInTime]
       formatter.timeZone = TimeZone(abbreviation: "UTC")
       return formatter
    }()
