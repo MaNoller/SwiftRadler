@@ -24,4 +24,8 @@ struct Queue<T> {
          ? list.removeFirst()
          : nil
    }
+   
+   mutating func removeAll() {
+      list.removeAll()
+   }
 }
