@@ -3,6 +3,8 @@ import Foundation
 public struct Queue<T> {
    private var list = [T]()
    
+   public init() {}
+   
    private var last: T? {
       return list.last
    }
