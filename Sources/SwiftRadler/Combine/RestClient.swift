@@ -188,7 +188,9 @@ public struct RestClient {
          print(json)
          print("--------------------")
       } catch {
-         print(error.localizedDescription)
+         let str = String(decoding: data, as: UTF8.self)
+         print("Failed to decode string: \(str)")
+         print("Error: \(error.localizedDescription)")
          print("--------------------")
       }
       return data
