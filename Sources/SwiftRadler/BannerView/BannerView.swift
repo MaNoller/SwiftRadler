@@ -90,7 +90,6 @@ public struct BannerView: View {
       .foregroundColor(Color.white) 
       .padding(12)
       .background(bgColor(for: type))
-      .cornerRadius(8)
    }
 }
 
