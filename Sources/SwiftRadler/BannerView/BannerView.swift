@@ -3,7 +3,7 @@ import SwiftUI
 public struct BannerView: View {
    @ObservedObject var controller: BannerController
    
-   @State var hasBanner = true
+   @State var hasBanner = false
    
    static var blue: Color { Color(red: 0.188, green: 0.341, blue: 0.851) }
    
