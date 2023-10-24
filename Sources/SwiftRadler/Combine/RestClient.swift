@@ -7,6 +7,7 @@ public enum RestError: Error {
    case networkError
    case unauthorized
    case apiError(Int, String)
+   case canceled
    case unknown
 }
 
