@@ -144,6 +144,8 @@ public struct RestClient {
             refreshTokenHandler()
          }
          throw RestError.unauthorized
+      } else if response.statusCode == 499 {
+         throw RestError.canceled
       } else if response.statusCode < 200 || response.statusCode >= 300 {
          guard let errMsg = String(data: output.data, encoding: .utf8) else {
             throw RestError.networkError
