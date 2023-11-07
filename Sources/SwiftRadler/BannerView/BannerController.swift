@@ -3,6 +3,8 @@ import Combine
 
 public class BannerController: ObservableObject {
    
+   public var autoHideTime: TimeInterval = 5
+   
    @Published private(set) var banner: BannerData? = nil
    @Published private(set) var isRunning = false
    
@@ -30,7 +32,7 @@ public class BannerController: ObservableObject {
       isRunning = banner != nil
       
       if banner != nil {
-         Timer.scheduledTimer(withTimeInterval: 5, repeats: false) { [weak self] _ in
+         Timer.scheduledTimer(withTimeInterval: autoHideTime, repeats: false) { [weak self] _ in
             self?.hide()
          }
       }
