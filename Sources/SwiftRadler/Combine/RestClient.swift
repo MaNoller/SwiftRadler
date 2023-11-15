@@ -178,7 +178,7 @@ public struct RestClient {
       if let error = error as? RestError {
          return error
       }
-      print("### ERROR: \(error.localizedDescription)")
+      print("### ERROR: \(error)")
       //        restError.localizedDescription = error.localizedDescription
       return restError
    }
