@@ -179,7 +179,6 @@ public struct RestClient {
          return error
       }
       print("### ERROR: \(error)")
-      //        restError.localizedDescription = error.localizedDescription
       return restError
    }
    
