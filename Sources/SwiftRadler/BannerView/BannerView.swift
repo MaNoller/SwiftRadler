@@ -5,8 +5,6 @@ public struct BannerView: View {
    
    @State var hasBanner = false
    
-   static var blue: Color { Color(red: 0.188, green: 0.341, blue: 0.851) }
-   
    public init(controller: BannerController) {
       self.controller = controller
    }
@@ -42,7 +40,7 @@ public struct BannerView: View {
             VStack {
                bannerBox(title: controller.banner?.title ?? "",
                          message: controller.banner?.message ?? "",
-                         type: controller.banner?.type ?? .info)
+                         type: controller.banner?.type ?? controller.lastUsedType)
                
                Spacer()
             }
