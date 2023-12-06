@@ -6,6 +6,7 @@ public class BannerController: ObservableObject {
    public var autoHideTime: TimeInterval = 5
    
    @Published private(set) var banner: BannerData? = nil
+   @Published private(set) var lastUsedType = BannerType.info
    @Published private(set) var isRunning = false
    
    private var queue = Queue<BannerData>()
@@ -30,8 +31,9 @@ public class BannerController: ObservableObject {
    private func run() {
       banner = queue.pop()
       isRunning = banner != nil
-      
-      if banner != nil {
+
+      if let banner {
+         lastUsedType = banner.type
          Timer.scheduledTimer(withTimeInterval: autoHideTime, repeats: false) { [weak self] _ in
             self?.hide()
          }

@@ -6,8 +6,8 @@
         "repositoryURL": "https://github.com/AzureAD/microsoft-authentication-library-for-objc.git",
         "state": {
           "branch": null,
-          "revision": "838301c6bbdcca860bc42ade7e629313c681510f",
-          "version": "1.2.18"
+          "revision": "0e10cbc76a19cd1fd3d8cc4bcaa7fe428a3680ab",
+          "version": "1.2.19"
         }
       }
     ]
