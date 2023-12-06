@@ -39,14 +39,14 @@ public struct LibraryCopyrightView: View {
          Text(library.license.text)
             .padding([.leading, .trailing, .bottom])
       }
-      .navigationTitle(library.name)
+      .navigationTitle(library.shortName ?? library.name)
    }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
    static let libraries = [
-      LibraryCopyright(name: "Test Lib 1", version: "1.1.1", license: .mit, copyright: "Copyright (c) Blub GmbH."),
-      LibraryCopyright(name: "Super Lib", version: "4.4.2", license: .mit, copyright: "Copyright (c) Blub Corporation.")
+      LibraryCopyright(name: "Test Lib 1", shortName: nil, version: "1.1.1", license: .mit, copyright: "Copyright (c) Blub GmbH."),
+      LibraryCopyright(name: "Super Lib", shortName: "SL", version: "4.4.2", license: .mit, copyright: "Copyright (c) Blub Corporation.")
    ]
    
    static var previews: some View {
