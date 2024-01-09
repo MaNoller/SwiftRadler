@@ -36,9 +36,11 @@ public struct LibraryCopyrightView: View {
    
    private static func licenseTextView(library: LibraryCopyright) -> some View {
       ScrollView {
-         Text(library.name)
-            .font(.largeTitle.bold())
-            .padding([.leading, .trailing, .bottom])
+         if (library.shortName != nil) {
+            Text(library.name)
+               .font(.largeTitle.bold())
+               //.padding([.leading, .trailing, .bottom])
+         }
          Text(library.license.text)
             .padding([.leading, .trailing, .bottom])
       }
