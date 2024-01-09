@@ -39,6 +39,7 @@ public struct LibraryCopyrightView: View {
          if (library.shortName != nil) {
             Text(library.name)
                //.font(.largeTitle)
+               .frame(maxWidth: .infinity, alignment: .leading)
                .padding([.leading])
                .border(.yellow)
          }
