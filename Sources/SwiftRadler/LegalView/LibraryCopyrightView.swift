@@ -38,8 +38,8 @@ public struct LibraryCopyrightView: View {
       ScrollView {
          if (library.shortName != nil) {
             Text(library.name)
-               .font(.largeTitle.bold())
-               .frame(maxWidth: .infinity, alignment: .leading)
+               .font(.largeTitle)
+               .padding([.leading, .trailing, .bottom, .top])
          }
          Text(library.license.text)
             .padding([.leading, .trailing, .bottom])
