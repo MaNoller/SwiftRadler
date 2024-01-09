@@ -40,14 +40,12 @@ public struct LibraryCopyrightView: View {
             Text(library.name)
                .font(.largeTitle)
                .frame(maxWidth: .infinity, alignment: .leading)
-               .padding([.leading])
-               .border(.yellow)
+               .padding([.leading, .trailing, .bottom])
          }
          Text(library.license.text)
             .padding([.leading, .trailing, .bottom])
-            .border(.green)
       }
-      .navigationTitle(library.shortName ?? library.name).border(.red)
+      .navigationTitle(library.shortName ?? library.name)
    }
 }
 
