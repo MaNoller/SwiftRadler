@@ -10,6 +10,19 @@ public enum License: String {
       case .bsd3: return BSD_3_LICENSE_TEXT
       }
    }
+   
+   public func readLicenseText(for packageIndex: Int) -> String {
+      if let path = Bundle.main.url(forResource: "LICENSE", withExtension: nil) {
+         do {
+            let licenseText = try String(contentsOf: path, encoding: .utf8)
+            return licenseText
+         } catch {
+            print("Error reading license file for packge \(packageIndex): \(error.localizedDescription)")
+            return self.text
+         }
+      }
+      return self.text
+   }
 }
 
 fileprivate var MIT_LICENSE_TEXT: String {
