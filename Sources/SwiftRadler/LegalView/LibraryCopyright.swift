@@ -2,7 +2,6 @@ import Foundation
 
 public struct LibraryCopyright: Hashable, Identifiable {
    public let id = UUID()
-   public let index: Int
    public let name: String
    public let version: String
    public let license: License
@@ -10,8 +9,7 @@ public struct LibraryCopyright: Hashable, Identifiable {
    public let shortName: String?
    public let url: String
    
-   public init(index: Int, name: String, shortName: String?, version: String, license: License, copyright: String, url: String) {
-      self.index = index
+   public init(name: String, shortName: String?, version: String, license: License, copyright: String, url: String) {
       self.name = name
       self.shortName = shortName ?? nil
       self.version = version
