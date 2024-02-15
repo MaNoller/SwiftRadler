@@ -43,6 +43,7 @@ public struct LibraryCopyrightView: View {
                .padding([.leading, .trailing, .bottom])
          }
          Link(library.url, destination: URL(string: library.url)!)
+            .frame(maxWidth: .infinity, alignment: .leading)
             .padding([.leading, .trailing, .bottom])
          Text(library.license.readLicenseText(name: library.name))
             .padding([.leading, .trailing, .bottom])
