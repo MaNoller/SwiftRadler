@@ -11,7 +11,7 @@ public struct LibraryCopyright: Hashable, Identifiable {
    
    public init(name: String, shortName: String? = nil, version: String, license: License, copyright: String, url: String) {
       self.name = name
-      self.shortName = shortName ?? nil
+      self.shortName = shortName
       self.version = version
       self.license = license
       self.copyright = copyright
