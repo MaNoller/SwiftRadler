@@ -3,13 +3,6 @@ import Foundation
 public enum License: String {
    case mit = "MIT"
    case bsd3 = "BSD-3"
-   
-   public func readLicenseText(name: String) -> String {
-      if let licensText = licensesText[name] {
-         return licensText
-      }
-      return "No License Text found!"
-   }
 }
 
 fileprivate var licensesText: [String: String] = [
