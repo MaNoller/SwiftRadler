@@ -36,17 +36,26 @@ public struct LibraryCopyrightView: View {
    
    private static func licenseTextView(library: LibraryCopyright) -> some View {
       ScrollView {
-         Text(library.license.text)
+         if (library.shortName != nil) {
+            Text(library.name)
+               .font(.largeTitle)
+               .frame(maxWidth: .infinity, alignment: .leading)
+               .padding([.leading, .trailing, .bottom])
+         }
+         Link(library.url, destination: URL(string: library.url)!)
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding([.leading, .trailing, .bottom])
+         Text(library.licenseText)
             .padding([.leading, .trailing, .bottom])
       }
-      .navigationTitle(library.name)
+      .navigationTitle(library.shortName ?? library.name)
    }
 }
 
 struct SwiftUIView_Previews: PreviewProvider {
    static let libraries = [
-      LibraryCopyright(name: "Test Lib 1", version: "1.1.1", license: .mit, copyright: "Copyright (c) Blub GmbH."),
-      LibraryCopyright(name: "Super Lib", version: "4.4.2", license: .mit, copyright: "Copyright (c) Blub Corporation.")
+      LibraryCopyright(name: "Test Lib 1", shortName: "TL1", version: "1.1.1", license: .mit, licenseText: "MIT...", copyright: "Copyright (c) Blub GmbH.", url: "https://www.evomotiv.de"),
+      LibraryCopyright(name: "Super Lib", version: "4.4.2", license: .bsd3, licenseText: "BSD-3...", copyright: "Copyright (c) Blub Corporation.", url: "https://www.evomotiv.de")
    ]
    
    static var previews: some View {
