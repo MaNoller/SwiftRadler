@@ -30,7 +30,7 @@ let package = Package(
             dependencies: []),
         .target(
             name: "SwiftRadlerMSAL",
-            dependencies: ["MSAL"]),
+            dependencies: ["SwiftRadler", "MSAL"]),
         .testTarget(
             name: "SwiftRadlerTests",
             dependencies: ["SwiftRadler", "SwiftRadlerMSAL"]),
