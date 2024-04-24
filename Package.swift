@@ -13,6 +13,9 @@ let package = Package(
         .library(
             name: "SwiftRadler",
             targets: ["SwiftRadler"]),
+        .library(
+            name: "SwiftRadlerMSAL",
+            targets: ["SwiftRadlerMSAL"]),
     ],
     dependencies: [
         // Dependencies declare other packages that this package depends on.
@@ -24,9 +27,12 @@ let package = Package(
         // Targets can depend on other targets in this package, and on products in packages this package depends on.
         .target(
             name: "SwiftRadler",
+            dependencies: []),
+        .target(
+            name: "SwiftRadlerMSAL",
             dependencies: ["MSAL"]),
         .testTarget(
             name: "SwiftRadlerTests",
-            dependencies: ["SwiftRadler"]),
+            dependencies: ["SwiftRadler", "SwiftRadlerMSAL"]),
     ]
 )
