@@ -1,8 +1,9 @@
 import SwiftUI
+#if canImport(UIKit)
 import UIKit
 
 public struct MSALView: UIViewControllerRepresentable {
-   public let controller = MSALViewController ()
+   public let controller = MSALViewController()
    
    public init() {}
    
@@ -27,3 +28,13 @@ public class MSALViewController: UIViewController {
       super.viewWillDisappear(animated)
    }
 }
+#elseif canImport(Cocoa)
+import Cocoa
+
+public struct MSALView {
+   public let controller = NSViewController()
+   
+   init() { /*NOT YET IMPLEMENTED */ }
+}
+
+#endif

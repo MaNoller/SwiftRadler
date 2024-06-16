@@ -1,7 +1,14 @@
 import Foundation
 import Combine
 import MSAL
+#if canImport(UIKit)
 import UIKit
+#endif
+#if canImport(Cocoa)
+import Cocoa
+
+public typealias UIViewController = NSViewController
+#endif
 
 public class MSAL {
    private let scopes: [String]
@@ -52,7 +59,9 @@ public class MSAL {
    }
    
    public func onOpenUrl(url: URL) {
+#if os(iOS)
       MSALPublicClientApplication.handleMSALResponse(url, sourceApplication: nil)
+#endif
    }
    
    //Mark: - Refresh
