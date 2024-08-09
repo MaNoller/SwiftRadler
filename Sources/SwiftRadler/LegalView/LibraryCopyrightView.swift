@@ -29,7 +29,7 @@ public struct LibraryCopyrightView: View {
    private static func libraryRow(library: LibraryCopyright) -> some View {
       VStack(alignment: .leading) {
          Text(library.name)
-         Text("Version: \(library.version), License: \(library.license.rawValue)")
+         Text("Version: \(library.version), License: \(library.license)")
          Text(library.copyright)
       }
    }
@@ -54,8 +54,8 @@ public struct LibraryCopyrightView: View {
 
 struct SwiftUIView_Previews: PreviewProvider {
    static let libraries = [
-      LibraryCopyright(name: "Test Lib 1", shortName: "TL1", version: "1.1.1", license: .mit, licenseText: "MIT...", copyright: "Copyright (c) Blub GmbH.", url: "https://www.evomotiv.de"),
-      LibraryCopyright(name: "Super Lib", version: "4.4.2", license: .bsd3, licenseText: "BSD-3...", copyright: "Copyright (c) Blub Corporation.", url: "https://www.evomotiv.de")
+      LibraryCopyright(name: "Test Lib 1", shortName: "TL1", version: "1.1.1", license: "MIT", licenseText: "MIT...", copyright: "Copyright (c) Blub GmbH.", url: "https://www.evomotiv.de"),
+      LibraryCopyright(name: "Super Lib", version: "4.4.2", license: "BSD-3", licenseText: "BSD-3...", copyright: "Copyright (c) Blub Corporation.", url: "https://www.evomotiv.de")
    ]
    
    static var previews: some View {
